@@ -1,0 +1,76 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="IconButtonLabelStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="/JayWpf/Resources/Fonts/#DejaVu Sans"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=HeavyForeground}"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="5 2 1 2"/>
+        <Setter Property="Text" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    
+    <Style x:Key="ButtonStyle" TargetType="Button">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ToolTip}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <Rectangle x:Name="RefreshBackground" Fill="{DynamicResource ResourceKey=NormalBackColor}"/>
+                        <TextBlock Style="{StaticResource ResourceKey=IconButtonLabelStyle}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Rectangle.Fill"
+                                    TargetName="RefreshBackground"
+                                    Value="{DynamicResource ResourceKey=ActiveBackColor}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ListBoxStyle" TargetType="ListBox">
+        <Setter Property="Background" Value="{DynamicResource ResourceKey=MidHvBackground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=LightForeground}"/>
+        <Setter Property="BorderThickness" Value="0 0 0 2"/>
+        <Setter Property="FontFamily" Value="/JayWpf/Resources/Fonts/#DejaVu Sans Mono"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="100"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=LightForeground}"/>
+        <Setter Property="ItemContainerStyle" Value="{DynamicResource ListboxItemStyle}" />
+    </Style>
+    <Style x:Key="ListboxItemStyle" TargetType="ListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Grid>
+                        <Border Background="{TemplateBinding Background}" />
+                        <TextBlock Foreground="{TemplateBinding Foreground}"/>
+                        <TextBlock x:Name="txtChecked" TextAlignment="Right"/>
+                        <ContentPresenter />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsSelected" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" Value="{DynamicResource ResourceKey=MidLtBackground}" />
+                            <Setter TargetName="txtChecked" Property="TextBlock.Text" Value="✓"/>
+                        </MultiTrigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource ResourceKey=HeavyBackground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=NormalForeColor}" />
+                            <Setter TargetName="txtChecked" Property="TextBlock.Text" Value="✓"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
