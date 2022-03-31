@@ -1,7 +1,9 @@
-# Third Eye (WPF)
+# 3rd Eye (WPF)
 **Last Updated:** 06 March 2014
 
-This is the code repository for a WPF app called "Third Eye".<br/>
+![screenshot](screenshots/wpf-thirdeye-001.png)
+
+This is the code repository for a WPF app called "3rd Eye".<br/>
 It is called as such because it's function is to serve as my eyes behind my head.<br/>
 It is an app that displays camera feeds (connected to the PC).<br/>
 
